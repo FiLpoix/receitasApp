@@ -25,8 +25,8 @@ export default function DetalhesScreen({ route, navigation }) {
             </TouchableOpacity>
 
             <WebView
-                source={{ uri: 'https://www.youtube.com/embed/watch?v=UnktCDi-BVs&list=WL&index=13' }}
-                allowsFullscreenVideo={true} />
+                style={styles.video} 
+                source={{uri:'https://www.youtube.com/embed/AlVl7VM6wLU?si=-wSjSgY4-WBjlOqy'}} />
         </View>
     );
 }
@@ -68,5 +68,9 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
+    },
+    video:{
+        width:'5rem',
+        marginTop:20
     },
 });
