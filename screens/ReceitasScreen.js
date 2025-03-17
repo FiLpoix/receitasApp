@@ -1,30 +1,25 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
+import React, { useLayoutEffect, useState, useContext } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
+import ReceitasContext from '../components/context';
 
 export default function ReceitasScreen({ navigation }) {
     const [searchQuery, setSearchQuery] = useState('');
-    
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
     }, [navigation]);
 
-    const receitas = [
-        { id: 1, imagem: require('../assets/boloChocolate.jpg'), nome: 'Bolo de Chocolate', ingredientes: 'Farinha, Ovos, Chocolate...', preparo: 'Misture tudo e asse por 40min.' },
-        { id: 2, imagem: require('../assets/panqueca.jpg'), nome: 'Panqueca', ingredientes: 'Farinha, Leite, Ovos...', preparo: 'Misture tudo e frite em uma frigideira.' },
-        { id: 3, imagem: require('../assets/brigadeiro.jpg'), nome: 'Brigadeiro', ingredientes: 'Leite Condensado, Chocolate, Manteiga...', preparo: 'Cozinhe até engrossar e enrole.' },
-        { id: 4, imagem: require('../assets/pizza.jpg'), nome: 'Pizza', ingredientes: 'Farinha, Fermento, Calabresa...', preparo: 'Misture farinha e fermento, adicione calabresa e asse pro 30min' },
-        { id: 5, imagem: require('../assets/tacos.jpg'), nome: 'Tacos', ingredientes: 'Tortilha, Guacamole, Tomate...', preparo: 'Adicione tudo na tortilha e asse' },
-    ];
+    const {receitasData} = useContext(ReceitasContext)
 
-    const filteredReceitas = receitas.filter((receita) =>
-        receita.nome.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredReceitas = receitasData.filter((receitasData) =>
+        receitasData.nome.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>🍽 Lista de Receitas</Text>
+            <Text style={styles.title}>Lista de Receitas</Text>
 
             <TextInput
                 style={styles.searchInput}

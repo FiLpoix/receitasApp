@@ -26,7 +26,7 @@ export default function DetalhesScreen({ route, navigation }) {
 
             <WebView
                 style={styles.video} 
-                source={{uri:'https://www.youtube.com/embed/AlVl7VM6wLU?si=-wSjSgY4-WBjlOqy'}} />
+                source={{uri:'https://www.youtube.com/embed/1LxkSytm7yE?si=3_RRMpNxf3O4SaPI'}} />
         </View>
     );
 }
